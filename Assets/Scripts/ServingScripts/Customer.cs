@@ -8,16 +8,15 @@ public class Customer : MonoBehaviour
 {
     [SerializeField]
     private float patiencePercentage = 100f;
+    [SerializeField]
+    private ProgressBar patience;
     public bool seated = false;
     public int seat = -1;
     public bool hasBeenServed = false;
-    [SerializeField]
-    Counter counter;
+    public Counter counter;
 
     private void Start() {
         transform.position = new Vector2(-20, 0);
-        EnterScene();
-        GenerateOrder();
     }
 
     private void GenerateOrder() {
@@ -32,6 +31,7 @@ public class Customer : MonoBehaviour
                 seat = i;
                 StartCoroutine(Move(-20f, counter.seatPositions[i].x));
                 seated = true;
+                GenerateOrder();
                 break;
             }
         }
@@ -40,14 +40,14 @@ public class Customer : MonoBehaviour
     private void ExitScene(bool goodMood) {
         //move the customer off the scene
         float startPos = transform.position.x;
-        counter.seating[seat] = false;
         StartCoroutine(Move(startPos, -20f));
+        counter.seating[seat] = false;
+        Destroy(gameObject, 3);
     }
 
     IEnumerator Move(float start, float end) {
         float t = 0;
         while (t < 3f) {
-            Debug.Log(t);
             transform.position = new Vector2(Mathf.Lerp(start, end, t), 0f);
             t += Time.deltaTime; 
             yield return null;
@@ -60,12 +60,19 @@ public class Customer : MonoBehaviour
             if (hasBeenServed) {
                 //Pay the Player <<<<<
                 ExitScene(true);
+                seated = false;
             }
 
             patiencePercentage -= Time.deltaTime;
+            patience.value = patiencePercentage;
             if (patiencePercentage < 0) {
                 ExitScene(false);
+                seated = false;
             }
+        }
+        else
+        {
+            EnterScene();
         }
     }
 }

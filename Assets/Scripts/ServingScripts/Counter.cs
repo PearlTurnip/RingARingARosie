@@ -9,7 +9,7 @@ public class Counter : MonoBehaviour
         seating = new bool[6];
         seatPositions = new Vector2[6];
         for (int i = 0; i < seating.Length; i++) {
-            seatPositions[i] = new Vector2(i*2f - 8f, 0f);
+            seatPositions[i] = new Vector2(i*3f - 8f, 0f);
         }
     }
 }

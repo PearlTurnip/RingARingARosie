@@ -9,11 +9,13 @@ public class Flower
     Sprite[] images;
 
 
-    public Sprite[] GetSprites(){
+    public Sprite[] GetSprites()
+    {
         return images;
     }
 
-    public string GetName(){
+    public string GetName()
+    {
         return Name;
     }
 }
