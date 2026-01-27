@@ -12,10 +12,10 @@ public class UIHandler : MonoBehaviour
 
 	private IEnumerator LerpStorePanel() {
 		float t = 0;
-		float startingPosition = store.transform.position.x;
+		float startingPosition = store.transform.localPosition.x;
 		float goalPosition = storeOpen ? startingPosition - 230 : startingPosition + 230;
 		while (t < 1) {
-			store.transform.position = new Vector3(Mathf.Lerp(startingPosition, goalPosition, t), store.transform.position.y, store.transform.position.z);
+			store.transform.localPosition = new Vector3(Mathf.Lerp(startingPosition, goalPosition, t), store.transform.localPosition.y, store.transform.localPosition.z);
 			t += Time.deltaTime * 5;
 			yield return null;
 		}
@@ -27,10 +27,12 @@ public class UIHandler : MonoBehaviour
 	}
 
 	public void PurchaseFlower(Type flower) {
-		foreach (GrowingFlower growingFlower in FindObjectsByType<GrowingFlower>(FindObjectsSortMode.None)) {
+		foreach (GrowingFlower growingFlower in FindObjectsByType<GrowingFlower>(FindObjectsSortMode.InstanceID)) {
 			if (growingFlower.flower == null) {
+				//Basically just doing "new Flower()" but in a more annoying way
 				growingFlower.flower = (Flower)Activator.CreateInstance(flower);
 				growingFlower.UpdateText();
+				growingFlower.UpdateSprite();
 				break;
 			}
 		}
@@ -43,12 +45,14 @@ public class UIHandler : MonoBehaviour
 
 		GameObject purchaseableFlower = Resources.Load<GameObject>("Prefabs/PurchaseableFlower");
 
+		//Get all types that are children of the flower type, then create an object for each of them in the shop
 		int flowerCount = 0;
 		foreach (Type type in Assembly.GetExecutingAssembly().GetTypes()) {
 			if (!type.IsSubclassOf(typeof(Flower))) {
 				continue;
 			}
 
+			//Basically just doing "new Flower()" but in a more annoying way
 			Flower flower = (Flower)Activator.CreateInstance(type);
 
 			Transform newPurchaseableFlower = Instantiate(purchaseableFlower, store.transform).transform;
