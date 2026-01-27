@@ -63,21 +63,6 @@ public class Order {
     }
 }
 
-public class Daisy : Flower {
-    public Daisy() {
-        Name = "Daisy";
-        Description = "Daisy? I hardly know her";
-        Price = 20;
-
-        GrowTime = 2;
-        WaterNeeded = 0;
-
-        DecoratingSprites = new Sprite[] {
-            Resources.Load<Sprite>("Sprites/FlowerPots/daisy_pot"),
-            Resources.Load<Sprite>("Sprites/FlowerPots/daisy_pot")
-        };
-    }
-}
 
 public class OrderData {
     // Creating flower instances
