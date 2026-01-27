@@ -7,9 +7,10 @@ public class Flower
 	private int price;
 
 	private int growTime;
+	private int daysGrown = 0;
+
 	private float waterNeeded;
 	private float waterGiven = 0;
-	private int growStage = 0;
 
 	private Sprite[] growingSprites;
 	private Sprite[] decoratingSprites;
@@ -19,9 +20,9 @@ public class Flower
 	public string Description { get => description; set => description = value; }
 	public int Price { get => price; set => price = value; }
 	public int GrowTime { get => growTime; set => growTime = value; }
+	public int DaysGrown { get => daysGrown; set => daysGrown = value; }
 	public float WaterNeeded { get => waterNeeded; set => waterNeeded = value; }
 	public float WaterGiven { get => waterGiven; set => waterGiven = value; }
-	public int GrowStage { get => growStage; set => growStage = value; }
     public Sprite[] GrowingSprites { get => growingSprites; set => growingSprites = value; }
     public Sprite[] DecoratingSprites { get => decoratingSprites; set => decoratingSprites = value; }
 }
