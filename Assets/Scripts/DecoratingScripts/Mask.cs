@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -54,6 +55,8 @@ public class Mask : MonoBehaviour
                 if (!hit.collider.TryGetComponent<FlowerPot>(out FlowerPot potScript)) continue;
 
                 potScript.GetAttachedFlower();
+
+                Debug.Log("aaaaa");
                 
             }            
         }
