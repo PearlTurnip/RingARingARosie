@@ -140,6 +140,8 @@ public class Customer : MonoBehaviour
                 money += Mathf.FloorToInt(patiencePercentage);
                 moneyUI.text = "$$ - " + money.ToString();
 
+                PlayerPrefs.SetInt("Money", money);
+
                 ExitScene(true);
                 seated = false;
             }

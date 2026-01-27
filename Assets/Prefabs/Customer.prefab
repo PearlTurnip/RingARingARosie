@@ -570,12 +570,12 @@ MonoBehaviour:
   textBubble: {fileID: 3166534233575856471}
   orderText: {fileID: 7656601902001717594}
   flowers:
-  - Lavender
   - Rose
+  - Sunflower
   - Mint
-  - Jasmine
-  - Leeches
-  - Carrot
+  - Lavender
+  - Rosemary
+  - Posie
   moneyUI: {fileID: 0}
   seated: 0
   seat: -1
