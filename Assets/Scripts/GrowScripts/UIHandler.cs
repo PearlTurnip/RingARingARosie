@@ -54,7 +54,7 @@ public class UIHandler : MonoBehaviour
 			Transform newPurchaseableFlower = Instantiate(purchaseableFlower, store.transform).transform;
 
 			newPurchaseableFlower.localPosition = new Vector3(0, 102 - (120 * flowerCount), 0);
-			//newPurchaseableFlower.Find("FlowerSprite").GetComponent<SpriteRenderer>().sprite = flower.Sprites[0]; ;
+			newPurchaseableFlower.Find("FlowerSprite").GetComponent<Image>().sprite = flower.GrowingSprites[0];
 			newPurchaseableFlower.Find("FlowerNameText").GetComponent<TextMeshProUGUI>().text = flower.Name;
 			newPurchaseableFlower.Find("FlowerCostText").GetComponent<TextMeshProUGUI>().text = $"{flower.Price}";
 			newPurchaseableFlower.Find("PurchaseFlowerButton").GetComponent<Button>().onClick.AddListener(() => PurchaseFlower(type));

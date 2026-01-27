@@ -20,7 +20,7 @@ public class OrderItem {
     }
 
     public Sprite GetSprite(){
-        return flower.Sprites[0];
+        return flower.GrowingSprites[0];
     }
 
     int GetNearestPositionIndex(Vector2 position){
@@ -56,20 +56,8 @@ public class Order {
     }
 }
 
-public class Daisy : Flower {
-    public Daisy() {
-        Name = "Daisy";
-        Description = "Daisy? I hardly know her";
-        Price = 20;
-
-        GrowTime = 2;
-        WaterNeeded = 0;
-
-    }
-}
-
 public class OrderData {
     // Creating flower instances
     public Lavendar lavendar = new();
-    public 
+    //public 
 }
