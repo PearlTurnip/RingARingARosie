@@ -1,12 +1,14 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class OrderItem {
     private Flower flower;
+    private int amount;
     private Vector2[] validPositions;
 
-    OrderItem(Flower _flower, Vector2[] positions) {
+    public OrderItem(Flower _flower, int amt, Vector2[] positions) {
         flower = _flower;
+        amount = amt;
         validPositions = positions;
     }
 
@@ -20,7 +22,7 @@ public class OrderItem {
     }
 
     public Sprite GetSprite(){
-        return flower.GrowingSprites[0];
+        return flower.DecoratingSprites[0];
     }
 
     int GetNearestPositionIndex(Vector2 position){
@@ -51,13 +53,54 @@ public class Order {
 
     OrderItem selectedItem;
 
+    public Order(Sprite maskSprite, OrderItem[] _items) {
+        mask = maskSprite;
+        items = _items;
+    }
+
     public OrderItem[] GetItems(){
         return items;
     }
 }
 
+public class Daisy : Flower {
+    public Daisy() {
+        Name = "Daisy";
+        Description = "Daisy? I hardly know her";
+        Price = 20;
+
+        GrowTime = 2;
+        WaterNeeded = 0;
+
+        DecoratingSprites = new Sprite[] {
+            Resources.Load<Sprite>("Sprites/FlowerPots/daisy_pot"),
+            Resources.Load<Sprite>("Sprites/FlowerPots/daisy_pot")
+        };
+    }
+}
+
 public class OrderData {
     // Creating flower instances
-    public Lavendar lavendar = new();
-    //public 
+    public Daisy daisy;
+    public OrderItem daisyOrder;
+
+    public Order test;
+
+
+    public OrderData() {
+        daisy = new();
+        daisyOrder = new OrderItem(
+            daisy,
+            2,
+            new Vector2[]{
+                new Vector2(-1,1), new Vector2(1,-1)
+            }
+        );
+
+        test = new Order(
+            Resources.Load<Sprite>("Sprites/Picture1"),
+            new OrderItem[] { daisyOrder }
+        );
+
+    }
 }

@@ -19,11 +19,10 @@ public class GameLogic : MonoBehaviour
 
     private float timeRemaining = 120f;
     private int score = 0;
-    private int remainingCustomers = 3;
 
     public FlowerPotData[] potData = new FlowerPotData[6];
 
-    private GameObject currentMask;
+    [SerializeField] private GameObject currentMask;
 
 
     public void TogglePlay() {
@@ -48,8 +47,8 @@ public class GameLogic : MonoBehaviour
     }
 
     private void UIUpdate() {
-        scoreText.text = $"Score - ${score}";
-        timerText.text = $"Time Remaining : ${ConvertToTime()}";
+        scoreText.text = $"Score - {score}";
+        timerText.text = $"Time Remaining : {ConvertToTime()}";
         // Possibly remaining customers here (review with otehrs)
     }
 
