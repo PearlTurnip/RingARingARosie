@@ -1,21 +1,21 @@
 using UnityEngine;
 
-public class Flower
-{
-    string Name;
-    string Description;
-    int Price;
+//public class Flower
+//{
+//    string Name;
+//    string Description;
+//    int Price;
 
-    Sprite[] images;
+//    Sprite[] images;
 
 
-    public Sprite[] GetSprites()
-    {
-        return images;
-    }
+//    public Sprite[] GetSprites()
+//    {
+//        return images;
+//    }
 
-    public string GetName()
-    {
-        return Name;
-    }
-}
+//    public string GetName()
+//    {
+//        return Name;
+//    }
+//}

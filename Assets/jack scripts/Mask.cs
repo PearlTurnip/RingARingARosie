@@ -29,10 +29,10 @@ public class Mask : MonoBehaviour
 
     private void Update(){
         foreach (ItemGlow glow in highlightObjects){
-            if (glow.GetName() == currentOrder.GetName())
-            {
+            //if (glow.GetName() == currentOrder.GetName())
+            //{
 
-            }
+            //}
         }
     }
 }

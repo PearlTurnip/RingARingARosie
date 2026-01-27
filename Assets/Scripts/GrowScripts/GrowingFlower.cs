@@ -15,11 +15,11 @@ public class GrowingFlower : MonoBehaviour
 			flowerText.text = "Empty";
 			return;
 		}
-		flowerText.text = $"{flower.name}\nWater: {flower.waterGiven / flower.waterNeeded:N0}%";
+		flowerText.text = $"{flower.Name}\nWater: {flower.WaterGiven / flower.WaterNeeded:N0}%";
 	}
 
 	private void OnMouseDrag() {
-        flower.waterGiven += 50 * Time.deltaTime;
+        flower.WaterGiven += 50 * Time.deltaTime;
 		UpdateText();
 	}
 

@@ -12,7 +12,7 @@ public class OrderItem {
 
     public string GetName()
     {
-        return flower.GetName();
+        return flower.Name;
     }
 
     public Vector2[] GetValidPositions(){
@@ -20,7 +20,7 @@ public class OrderItem {
     }
 
     public Sprite GetSprite(){
-        return flower.GetSprites()[0];
+        return flower.Sprites[0];
     }
 
     int GetNearestPositionIndex(Vector2 position){

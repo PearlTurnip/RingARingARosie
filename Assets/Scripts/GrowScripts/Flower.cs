@@ -2,26 +2,35 @@ using UnityEngine;
 
 public class Flower
 {
-    public string name;
-    public string description;
-    public int price;
+	private string name;
+	private string description;
+	private int price;
 
-    public int growTime;
-    public int waterNeeded;
-    public float waterGiven = 0;
-    public int growStage = 0;
+	private int growTime;
+	private int waterNeeded;
+	private float waterGiven = 0;
+	private int growStage = 0;
 
-    public Sprite[] images;
+	private Sprite[] sprites;
+
+	public string Name { get => name; set => name = value; }
+	public string Description { get => description; set => description = value; }
+	public int Price { get => price; set => price = value; }
+	public int GrowTime { get => growTime; set => growTime = value; }
+	public int WaterNeeded { get => waterNeeded; set => waterNeeded = value; }
+	public float WaterGiven { get => waterGiven; set => waterGiven = value; }
+	public int GrowStage { get => growStage; set => growStage = value; }
+	public Sprite[] Sprites { get => sprites; set => sprites = value; }
 }
 
 public class Lavendar : Flower {
     public Lavendar() {
-        name = "Lavendar";
-        description = "Smells good :D";
-        price = 100;
+        Name = "Lavendar";
+        Description = "Smells good :D";
+        Price = 100;
 
-        growTime = 3;
-        waterNeeded = 1;
+        GrowTime = 3;
+        WaterNeeded = 1;
 
     }
 }
