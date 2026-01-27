@@ -2,8 +2,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class OrderItem {
-    Flower flower;
-    Vector2[] validPositions;
+    private Flower flower;
+    private Vector2[] validPositions;
 
     OrderItem(Flower _flower, Vector2[] positions) {
         flower = _flower;
@@ -54,4 +54,22 @@ public class Order {
     public OrderItem[] GetItems(){
         return items;
     }
+}
+
+public class Daisy : Flower {
+    public Daisy() {
+        Name = "Daisy";
+        Description = "Daisy? I hardly know her";
+        Price = 20;
+
+        GrowTime = 2;
+        WaterNeeded = 0;
+
+    }
+}
+
+public class OrderData {
+    // Creating flower instances
+    public Lavendar lavendar = new();
+    public 
 }
