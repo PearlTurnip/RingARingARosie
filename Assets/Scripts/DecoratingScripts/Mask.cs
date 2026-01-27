@@ -1,14 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Mask : MonoBehaviour
 {
-    Order currentOrder;
+    private Order currentOrder;
     
 
-    int selectedOrderItemIndex;
-    int aliveTime = 0;
+    private int selectedOrderItemIndex;
 
-    ItemGlow[] highlightObjects;
+    private List<ItemGlow> highlightObjects = new List<ItemGlow>();
 
 
     public void PlaceHighlights() {
@@ -18,9 +18,15 @@ public class Mask : MonoBehaviour
 
                 // Place highlighted sprite here
                 GameObject itemObject = new GameObject();
+
+                // Creating the glow for the items
                 SpriteRenderer renderer = itemObject.AddComponent<SpriteRenderer>();
-                itemObject.AddComponent<ItemGlow>();
                 renderer.sprite = item.GetSprite();
+
+                // Creating highlight glow
+                ItemGlow glow = itemObject.AddComponent<ItemGlow>();
+                glow.targetName = item.GetName();
+                highlightObjects.Add(glow);
 
             }
         }
@@ -29,10 +35,9 @@ public class Mask : MonoBehaviour
 
     private void Update(){
         foreach (ItemGlow glow in highlightObjects){
-            //if (glow.GetName() == currentOrder.GetName())
-            //{
-
-            //}
+            if (glow.targetName == currentOrder.GetItems()[selectedOrderItemIndex].GetName()){
+                glow.UseGlow();
+            }
         }
     }
 }
