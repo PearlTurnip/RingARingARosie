@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 80228416}
   m_Layer: 0
   m_Name: FlowerBed2
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,7 +182,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.5406637, y: 1.9431261}
   m_EdgeRadius: 0
 --- !u!114 &80228417
 MonoBehaviour:
@@ -261,7 +261,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.3878, y: -1.5188, z: 0}
-  m_LocalScale: {x: 5.5843, y: 1.8935753, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -276,6 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 407995898}
   - component: {fileID: 407995897}
+  - component: {fileID: 407995899}
   m_Layer: 0
   m_Name: Mask
   m_TagString: Untagged
@@ -326,7 +327,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -353,6 +354,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &407995899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407995896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752ab2e1890f1404096804060c99c7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &868967638
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +459,7 @@ GameObject:
   - component: {fileID: 981299961}
   m_Layer: 0
   m_Name: FlowerBed4
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,7 +508,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.4239182, y: 1.6492434}
   m_EdgeRadius: 0
 --- !u!114 &981299962
 MonoBehaviour:
@@ -574,7 +587,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.01, y: -3.7532, z: 0}
-  m_LocalScale: {x: 5.5843, y: 1.8935753, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -968,7 +981,7 @@ GameObject:
   - component: {fileID: 1557198942}
   m_Layer: 0
   m_Name: FlowerBed6
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1017,7 +1030,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.142582, y: 2.0291986}
   m_EdgeRadius: 0
 --- !u!114 &1557198943
 MonoBehaviour:
@@ -1096,7 +1109,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.01, y: 0.7358, z: 0}
-  m_LocalScale: {x: 5.5843, y: 1.8935753, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1115,7 +1128,7 @@ GameObject:
   - component: {fileID: 1593915795}
   m_Layer: 0
   m_Name: FlowerBed3
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1164,7 +1177,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.5147066, y: 1.7453414}
   m_EdgeRadius: 0
 --- !u!114 &1593915796
 MonoBehaviour:
@@ -1243,7 +1256,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.3878, y: 0.7358, z: 0}
-  m_LocalScale: {x: 5.5843, y: 1.8935753, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1518,7 +1531,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1057486003}
   timerText: {fileID: 1164970688}
-  potData: []
+  flowerPots:
+  - {fileID: 1958714861}
+  - {fileID: 80228415}
+  - {fileID: 1593915794}
+  - {fileID: 981299960}
+  - {fileID: 1905275633}
+  - {fileID: 1557198941}
+  potData:
+  - flower: daisy
+    potTexture: {fileID: 6323010106596006382, guid: 0533763b2cfc60f4e901848ba13a7dac, type: 3}
+  - flower: 
+    potTexture: {fileID: 0}
+  - flower: 
+    potTexture: {fileID: 0}
+  - flower: 
+    potTexture: {fileID: 0}
+  - flower: 
+    potTexture: {fileID: 0}
+  - flower: 
+    potTexture: {fileID: 0}
+  currentMask: {fileID: 407995896}
 --- !u!1 &1905275633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1566,7 @@ GameObject:
   - component: {fileID: 1905275634}
   m_Layer: 0
   m_Name: FlowerBed5
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1582,7 +1615,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.069306, y: 1.4131546}
   m_EdgeRadius: 0
 --- !u!114 &1905275635
 MonoBehaviour:
@@ -1661,7 +1694,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.01, y: -1.5188, z: 0}
-  m_LocalScale: {x: 5.5843, y: 1.8935753, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1680,7 +1713,7 @@ GameObject:
   - component: {fileID: 1958714862}
   m_Layer: 0
   m_Name: FlowerBed1
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1729,7 +1762,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.052491, y: 2.0021381}
   m_EdgeRadius: 0
 --- !u!114 &1958714863
 MonoBehaviour:
@@ -1808,7 +1841,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.3878, y: -3.7532, z: 0}
-  m_LocalScale: {x: 5.5843, y: 1.8935753, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
