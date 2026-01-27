@@ -40,8 +40,8 @@ public class UIHandler : MonoBehaviour
 	void Start()
 	{
 		store = transform.Find("StoreTab").gameObject;
-		//TODO: Replace with a resources API call
-		GameObject purchaseableFlower = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/PurchaseableFlower.prefab");
+
+		GameObject purchaseableFlower = Resources.Load<GameObject>("Prefabs/PurchaseableFlower");
 
 		int flowerCount = 0;
 		foreach (Type type in Assembly.GetExecutingAssembly().GetTypes()) {

@@ -34,8 +34,8 @@ public class Lavendar : Flower {
 
 		GrowTime = 3;
 		WaterNeeded = 1;
-		//TODO: Replace with a resources API call
-		GrowingSprites = UnityEditor.AssetDatabase.LoadAllAssetsAtPath("Assets/Sprites/Plants/plant4.png") as Sprite[];
+
+		GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant4");
 	}
 }
 
