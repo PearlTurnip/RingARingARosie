@@ -24,13 +24,13 @@ public class Flower
 }
 
 public class Lavendar : Flower {
-    public Lavendar() {
-        Name = "Lavendar";
-        Description = "Smells good :D";
-        Price = 100;
+	public Lavendar() {
+		Name = "Lavendar";
+		Description = "Smells good :D";
+		Price = 100;
 
-        GrowTime = 3;
-        WaterNeeded = 1;
+		GrowTime = 3;
+		WaterNeeded = 1;
 
-    }
+	}
 }

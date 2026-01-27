@@ -5,12 +5,12 @@ using UnityEngine;
 public class GrowingFlower : MonoBehaviour
 {
 
-    public Flower flower;
+	public Flower flower;
 
-    [SerializeField]
-    private TextMeshProUGUI flowerText;
+	[SerializeField]
+	private TextMeshProUGUI flowerText;
 
-    public void UpdateText() {
+	public void UpdateText() {
 		if (flower == null) {
 			flowerText.text = "Empty";
 			return;
@@ -19,22 +19,22 @@ public class GrowingFlower : MonoBehaviour
 	}
 
 	private void OnMouseDrag() {
-        flower.WaterGiven += 50 * Time.deltaTime;
+		flower.WaterGiven += 50 * Time.deltaTime;
 		UpdateText();
 	}
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
-    {
+	{
 		UpdateText();
 
 		//flower = new Lavendar();
 		//flowerText.text = $"{flower.name}\nWater: {flower.waterGiven / flower.waterNeeded:N0}%";
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Update is called once per frame
+	void Update()
+	{
 
-    }
+	}
 }
