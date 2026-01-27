@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 80228416}
   m_Layer: 0
   m_Name: FlowerBed2
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 981299961}
   m_Layer: 0
   m_Name: FlowerBed4
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -981,7 +981,7 @@ GameObject:
   - component: {fileID: 1557198942}
   m_Layer: 0
   m_Name: FlowerBed6
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 1593915795}
   m_Layer: 0
   m_Name: FlowerBed3
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1566,7 +1566,7 @@ GameObject:
   - component: {fileID: 1905275634}
   m_Layer: 0
   m_Name: FlowerBed5
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 1958714862}
   m_Layer: 0
   m_Name: FlowerBed1
-  m_TagString: Untagged
+  m_TagString: FlowerPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
