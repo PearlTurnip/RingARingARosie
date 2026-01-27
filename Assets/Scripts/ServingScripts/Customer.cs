@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
+using TMPro;
 
 public class Customer : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class Customer : MonoBehaviour
     private float patiencePercentage = 100f;
     [SerializeField]
     private ProgressBar patience;
+    public TextMeshProUGUI moneyUI;
     public bool seated = false;
     public int seat = -1;
     public bool hasBeenServed = false;
@@ -58,7 +57,13 @@ public class Customer : MonoBehaviour
     private void Update() {
         if (seated) {
             if (hasBeenServed) {
-                //Pay the Player <<<<<
+                //Pay the Player
+                string currentMoney = moneyUI.text;
+                currentMoney = currentMoney.Remove(0, 5);
+                int money = int.Parse(currentMoney); 
+                money += Mathf.FloorToInt(patiencePercentage);
+                moneyUI.text = "$$ - " + money.ToString();
+
                 ExitScene(true);
                 seated = false;
             }
@@ -70,7 +75,7 @@ public class Customer : MonoBehaviour
                 seated = false;
             }
         }
-        else
+        else if (seat == -1)
         {
             EnterScene();
         }
