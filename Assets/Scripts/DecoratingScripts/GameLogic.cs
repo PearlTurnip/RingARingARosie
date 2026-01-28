@@ -73,7 +73,7 @@ public class GameLogic : MonoBehaviour
             Flower flower = orderData.flowerArray[i];
             Sprite flowerSprite = flower.GrowingSprites[3];
 
-            for (int j=0; j<5; j++) {
+            for (int j=0; j<Mathf.Clamp(PlayerPrefs.GetInt(flower.Name, 50), 0, 50); j++) {
                 float offsetRange = 1f;
                 Vector2 randomOffset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-offsetRange, offsetRange) );
                 GameObject go = new GameObject();
@@ -100,16 +100,19 @@ public class GameLogic : MonoBehaviour
 
     private void DelayedScore() {
         int newScore = currentMask.GetComponent<Mask>().GetScore();
-        Debug.Log(score);
 
         if (newScore > 0) {
             score += (int)(newScore / 10);
             currentMask.GetComponent<Mask>().SetScore(newScore - (int)(newScore / 10));
         }
+
+        PlayerPrefs.SetInt("Money", score);
     }
 
     private void Start() {
-        SetOrder(FindFirstObjectByType<Customer>().orderOrder);
+        SetOrder(new OrderData().test);
+
+        //SetOrder(FindFirstObjectByType<Customer>().orderOrder);
     }
 
 

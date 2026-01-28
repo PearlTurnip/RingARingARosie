@@ -124,8 +124,8 @@ public class Mask : MonoBehaviour
 
                     if (heldFlower.GetComponent<DragFlower>().flowerId == currentOrder.GetItems()[selectedOrderItemIndex].GetName() ) {
                         placedFlowers++;
-                        score += (int)(currentOrder.GetItems()[selectedOrderItemIndex].GetAccuracy(heldFlower.transform.position) * 1000f);
-                        Debug.Log(currentOrder.GetItems()[selectedOrderItemIndex].GetAccuracy(heldFlower.transform.position) * 1000f);
+                        score += (int)(currentOrder.GetItems()[selectedOrderItemIndex].GetAccuracy(heldFlower.transform.position) * 100f);
+                        Debug.Log(currentOrder.GetItems()[selectedOrderItemIndex].GetAccuracy(heldFlower.transform.position) * 100f);
                     }
                 }
 
