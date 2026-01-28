@@ -122,6 +122,8 @@ public class GameLogic : MonoBehaviour
     }
 
     private void LoseUpdate() {
+        if (!FindFirstObjectByType<Customer>()) return;
+
         float patience = FindFirstObjectByType<Customer>().patiencePercentage;
         if (patience <= 0) {
             StartCoroutine(LoseScript("You're taking too long!", "Serve"));

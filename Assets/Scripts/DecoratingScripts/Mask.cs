@@ -54,7 +54,10 @@ public class Mask : MonoBehaviour
                 renderer.sprite = item.GetSprite();
 
                 itemObject.transform.localScale = new Vector2(4, 4);
+
+                float range = 0.5f;
                 itemObject.transform.position = highlightPos;
+                itemObject.transform.Translate(new Vector2(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range)));
 
                 // Creating highlight glow
                 ItemGlow glow = itemObject.AddComponent<ItemGlow>();
@@ -140,18 +143,19 @@ public class Mask : MonoBehaviour
     }
 
     private void CompletedDecorCheck() {
+        if (selectedOrderItemIndex >= currentOrder.GetItems().Length) {
+            // Finish mask decorating
+            if (FindFirstObjectByType<Customer>()) FindFirstObjectByType<Customer>().hasBeenServed = true;
+            win = true;
+            return;
+        }
+
+        if (currentOrder.GetItems().Length <= selectedOrderItemIndex) return;
+
         if (placedFlowers >= currentOrder.GetItems()[selectedOrderItemIndex].GetAmount()) {
             placedFlowers = 0;
             selectedOrderItemIndex++;
             PlaceHighlights();
-
-            // Collect score
-
-            if (selectedOrderItemIndex >= currentOrder.GetItems().Length) {
-                // Finish mask decorating
-                if (FindFirstObjectByType<Customer>()) FindFirstObjectByType<Customer>().hasBeenServed = true;
-                win = true;
-            }
         }
     }
 
