@@ -15,6 +15,7 @@ TagManager:
   - GrowScene
   - Canvas
   - MainGame
+  - Music
   layers:
   - Default
   - TransparentFX

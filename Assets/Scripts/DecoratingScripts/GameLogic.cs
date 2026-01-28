@@ -119,6 +119,7 @@ public class GameLogic : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("Money", score);
+        PlayerPrefs.Save();
     }
 
     private void LoseUpdate() {
