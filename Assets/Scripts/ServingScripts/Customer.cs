@@ -58,7 +58,7 @@ public class Customer : MonoBehaviour
              if ((0.5f <= randV && randV < 0.8f) || rigged == i)
             {
                 order.Add(i, "nose");
-                positions.Add(new Vector2(0, 0));
+                positions.Add(new Vector2(0, -3));
             }
             else if (randV < 0.6f)
             {
@@ -68,22 +68,22 @@ public class Customer : MonoBehaviour
             else if (randV < 0.7f)
             {
                 order.Add(i, "left cheek");
-                positions.Add(new Vector2(-1, -1));
+                positions.Add(new Vector2(1, -3));
             }
             else if (randV < 0.8f)
             {
                 order.Add(i, "right cheek");
-                positions.Add(new Vector2(1, -1));
+                positions.Add(new Vector2(-1, -3));
             }
             else if (randV < 0.9f)
             {
                 order.Add(i, "left eye");
-                positions.Add(new Vector2(1, -1));
+                positions.Add(new Vector2(1, -2));
             }
             else
             {
                 order.Add(i, "right eye");
-                positions.Add(new Vector2(1, 1));
+                positions.Add(new Vector2(-1, -2));
             }
         }
 
