@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8093138377232155229}
   m_Layer: 5
   m_Name: PurchaseFlowerButton
-  m_TagString: Untagged
+  m_TagString: GrowScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 8561313077487821327}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: GrowScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 276163297989440301}
   m_Layer: 5
   m_Name: PurchaseableFlower
-  m_TagString: Untagged
+  m_TagString: GrowScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 154026011559163233}
   m_Layer: 5
   m_Name: FlowerNameText
-  m_TagString: Untagged
+  m_TagString: GrowScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 1027677080667205683}
   m_Layer: 5
   m_Name: FlowerSprite
-  m_TagString: Untagged
+  m_TagString: GrowScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 5649678861695504507}
   m_Layer: 5
   m_Name: FlowerCostText
-  m_TagString: Untagged
+  m_TagString: GrowScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

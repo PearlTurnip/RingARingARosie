@@ -19,6 +19,7 @@ public class Customer : MonoBehaviour
     [SerializeField]
     private TextMeshPro orderText;
 
+    public Order orderOrder;
     public string[] flowers;
 
     public TextMeshProUGUI moneyUI;
@@ -47,6 +48,8 @@ public class Customer : MonoBehaviour
         bar.enabled = true;
         orderText.text = "A mask with:\n";
 
+        List<Vector2> positions = new List<Vector2>();
+
         int rigged = Mathf.FloorToInt(Random.Range(-0.5f + difficulty, howManyTypesOfFlowerAreThere - 1));
         Dictionary<int, string> order = new Dictionary<int, string>();
         for (int i = 0; i < howManyTypesOfFlowerAreThere; i++)
@@ -55,32 +58,75 @@ public class Customer : MonoBehaviour
              if ((0.5f <= randV && randV < 0.8f) || rigged == i)
             {
                 order.Add(i, "nose");
-            }
-            else if (randV < 0.5f)
-            {
-                order.Add(i, "none");
+                positions.Add(new Vector2(0, 0));
             }
             else if (randV < 0.6f)
             {
-                order.Add(i, "mouth");
+                order.Add(i, "none");
+                positions.Add(new Vector2(-20, -20));
+            }
+            else if (randV < 0.7f)
+            {
+                order.Add(i, "left cheek");
+                positions.Add(new Vector2(-1, -1));
+            }
+            else if (randV < 0.8f)
+            {
+                order.Add(i, "right cheek");
+                positions.Add(new Vector2(1, -1));
             }
             else if (randV < 0.9f)
             {
-                order.Add(i, "cheeks");
+                order.Add(i, "left eye");
+                positions.Add(new Vector2(1, -1));
             }
             else
             {
-                order.Add(i, "eyes");
+                order.Add(i, "right eye");
+                positions.Add(new Vector2(1, 1));
             }
         }
 
+        List<OrderItem> orderItems = new List<OrderItem>();
+        Vector2[] pos;
         for (int i = 0; i < howManyTypesOfFlowerAreThere; i++)
         {
             if (order[i] != "none")
             {
                 orderText.text += flowers[i] + " " + order[i] + "\n";
+
+                pos = new Vector2[1];
+                pos[0] = positions[i];
+                switch (flowers[i])
+                {
+                    case "Rose":
+                        Rose rose = new Rose();
+                        orderItems.Add(new OrderItem(rose, 1, pos));
+                        break;
+                    case "Sunflower":
+                        Sunflower sunflower = new Sunflower();
+                        orderItems.Add(new OrderItem(sunflower, 1, pos));
+                        break;
+                    case "Mint":
+                        Mint mint = new Mint();
+                        orderItems.Add(new OrderItem(mint, 1, pos));
+                        break;
+                    case "Lavender":
+                        Lavender lavender = new Lavender();
+                        orderItems.Add(new OrderItem(lavender, 1, pos));
+                        break;
+                    case "Rosemary":
+                        Rosemary rosemary = new Rosemary();
+                        orderItems.Add(new OrderItem(rosemary, 1, pos));
+                        break;
+                    case "Posie":
+                        Posies posie = new Posies();
+                        orderItems.Add(new OrderItem(posie, 1, pos));
+                        break;
+                }
             }
         }
+        orderOrder = new Order(orderItems.ToArray());
     }
 
     private void RemoveOrder(){
