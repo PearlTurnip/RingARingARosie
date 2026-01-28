@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GrowScene.unity
-    guid: 13e520d4778f9c34cb35a4a830755602
+    path: Assets/Scenes/MainMenu.unity
+    guid: 630467d02dcbf804ca105350b7485e2f
   - enabled: 1
     path: Assets/Scenes/MaskDecoratingSCene.unity
     guid: b01295b0ad4c9c84c9abd974a63b0e33
   - enabled: 1
     path: Assets/Scenes/Serve.unity
     guid: e21f5c00a8d60ca4bb27a818f338000c
+  - enabled: 1
+    path: Assets/Scenes/GrowScene.unity
+    guid: 13e520d4778f9c34cb35a4a830755602
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
