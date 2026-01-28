@@ -1,13 +1,14 @@
+using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
     // Collecting UI
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] TextMeshProUGUI titleText;
     [SerializeField] GameObject[] flowerPots;
 
     private bool running = true;
@@ -41,6 +42,7 @@ public class GameLogic : MonoBehaviour
         int sec = (int)(timeRemaining % 60f);
 
         if (timeRemaining <= 0) return "0:00";
+        if (sec < 10) return $"{min}:0{sec}";
         return $"{min}:{sec}";
     }
 
@@ -50,10 +52,19 @@ public class GameLogic : MonoBehaviour
         // Possibly remaining customers here (review with otehrs)
     }
 
+    IEnumerator LoseScript(string message) {
+        titleText.text = message;
+        yield return new WaitForSeconds(1.5f);
+        titleText.text = "";
+        // Change scene here. to? Thing?
+        SceneManager.LoadScene("Serve");
+    }
+
     private void DecoratingUpdate() {
         timeRemaining -= Time.deltaTime;
         UIUpdate();
         DelayedScore();
+        LoseUpdate();
 
 
         if (currentMask) {
@@ -107,6 +118,12 @@ public class GameLogic : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("Money", score);
+    }
+
+    private void LoseUpdate() {
+        if (timeRemaining <= 0) {
+            StartCoroutine(LoseScript("You're taking too long!"));
+        }
     }
 
     private void Start() {
