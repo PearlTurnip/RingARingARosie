@@ -79,8 +79,12 @@ public class GameLogic : MonoBehaviour
                 go.transform.position = pot.transform.position;
                 go.transform.Translate(randomOffset);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
                 // Attaching spirte
+=======
+                go.tag = "MaskScene";
+>>>>>>> Stashed changes
 =======
                 go.tag = "MaskScene";
 >>>>>>> Stashed changes

@@ -33,6 +33,9 @@ public class UIHandler : MonoBehaviour {
 =======
 		float startingPosition = store.transform.localPosition.x;
 		float goalPosition = storeOpen ? startingPosition - 600 : startingPosition + 600;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 		storeMoving = true;
 		while (t < 1) {

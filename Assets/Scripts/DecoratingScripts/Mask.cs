@@ -88,8 +88,12 @@ public class Mask : MonoBehaviour
                     // Creating object
                     heldFlower = new GameObject();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
                     // Attaching sprite
+=======
+                    heldFlower.tag = "MaskScene";
+>>>>>>> Stashed changes
 =======
                     heldFlower.tag = "MaskScene";
 >>>>>>> Stashed changes
