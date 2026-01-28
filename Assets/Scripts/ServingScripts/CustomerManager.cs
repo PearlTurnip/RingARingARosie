@@ -16,6 +16,11 @@ public class CustomerManager : MonoBehaviour
     private int runningDay = -1;
     public bool waitingForDayToEnd = false;
 
+    private void Start()
+    {
+        runningDay = day - 1;
+    }
+
     public void spawnCustomer()
     {
         Customer newCustomer = Instantiate(customerPrefab);
