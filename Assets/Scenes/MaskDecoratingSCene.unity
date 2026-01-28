@@ -161,7 +161,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752ab2e1890f1404096804060c99c7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &407995900
-BoxCollider2D:
+--- !u!60 &407995900
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -250,7 +250,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -264,8 +264,52 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.34, y: -0.25}
+      - {x: 0.34, y: -0.39}
+      - {x: 0.35, y: -0.45}
+      - {x: 0.45, y: -0.53}
+      - {x: 0.5, y: -0.53}
+      - {x: 0.52000004, y: -0.48999998}
+      - {x: 0.52, y: -0.48999998}
+      - {x: 0.52, y: -0.45}
+      - {x: 0.41, y: -0.37}
+      - {x: 0.48999998, y: -0.16}
+      - {x: 0.48999998, y: 0.12}
+      - {x: 0.41, y: 0.22999999}
+      - {x: 0.35, y: 0.37}
+      - {x: 0.26, y: 0.47}
+      - {x: 0.11, y: 0.53999996}
+      - {x: 0.03, y: 0.56}
+      - {x: -0.049999997, y: 0.56}
+      - {x: -0.19999999, y: 0.48999998}
+      - {x: -0.35, y: 0.35999998}
+      - {x: -0.42, y: 0.21}
+      - {x: -0.52, y: 0.08}
+      - {x: -0.47, y: -0.29}
+      - {x: -0.55, y: -0.26}
+      - {x: -0.62, y: -0.28}
+      - {x: -0.62, y: -0.34}
+      - {x: -0.59999996, y: -0.41}
+      - {x: -0.53999996, y: -0.45}
+      - {x: -0.41, y: -0.41}
+      - {x: -0.38, y: -0.32999998}
+      - {x: -0.35999998, y: -0.24}
+      - {x: -0.35, y: -0.16}
+      - {x: -0.41, y: -0.01}
+      - {x: -0.38, y: -0.03}
+      - {x: -0.35999998, y: -0.07}
+      - {x: -0.35, y: -0.19999999}
+      - {x: -0.29999998, y: -0.32999998}
+      - {x: -0.16, y: -0.51}
+      - {x: -0.099999994, y: -0.52}
+      - {x: -0.01, y: -0.53}
+      - {x: 0.099999994, y: -0.53}
+      - {x: 0.17999999, y: -0.48}
+      - {x: 0.29999998, y: -0.35}
+      - {x: 0.35, y: -0.22}
+  m_UseDelaunayMesh: 0
 --- !u!1 &679429672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,9 +1559,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3773585, g: 0.1606924, b: 0, a: 1}
+  m_SortingOrder: -23
+  m_Sprite: {fileID: 2680156424397046284, guid: 8c92c12b8a338f54b86fe36d4bf84594, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1536,9 +1580,9 @@ Transform:
   m_GameObject: {fileID: 1666399178}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.57, z: 0}
-  m_LocalScale: {x: 5.6681, y: 6.9452, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.84, y: 2.84, z: 2.84}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1727,24 +1771,11 @@ MonoBehaviour:
   timerText: {fileID: 1164970688}
   flowerPots:
   - {fileID: 1958714861}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  potData:
-  - flower: Daisy
-    potTexture: {fileID: 6323010106596006382, guid: 5c2aa7e8e4749f64b97469f70dec33e3, type: 3}
-  - flower: 
-    potTexture: {fileID: 0}
-  - flower: 
-    potTexture: {fileID: 0}
-  - flower: 
-    potTexture: {fileID: 0}
-  - flower: 
-    potTexture: {fileID: 0}
-  - flower: 
-    potTexture: {fileID: 0}
+  - {fileID: 1189504701}
+  - {fileID: 679429672}
+  - {fileID: 1047454703}
+  - {fileID: 942633183}
+  - {fileID: 1113952840}
   currentMask: {fileID: 407995896}
 --- !u!1 &1958714861
 GameObject:
