@@ -4,13 +4,22 @@ using System.Reflection;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Linq;
+using UnityEngine.SceneManagement;
 
-public class UIHandler : MonoBehaviour
-{
+public class UIHandler : MonoBehaviour {
+	[SerializeField]
 	private GameObject store;
 	private bool storeOpen = false;
 	private bool storeMoving;
+
 	private int money;
+	private int day;
+	[SerializeField]
+	private TextMeshProUGUI dayAndMoneyText;
+
+	[SerializeField]
+	private GameObject planter;
 
 	private IEnumerator LerpStorePanel() {
 		float t = 0;
@@ -34,26 +43,56 @@ public class UIHandler : MonoBehaviour
 	}
 
 	public void PurchaseFlower(Type flower) {
-		
+		//Basically just doing "new Flower()" but in a more annoying way
+		Flower flowerInstance = (Flower)Activator.CreateInstance(flower);
 
-		foreach (GrowingFlower growingFlower in FindObjectsByType<GrowingFlower>(FindObjectsSortMode.InstanceID)) {
+		//If you can't afford the seed then cancel the purchase
+		if (money < flowerInstance.Price) {
+			return;
+		}
+
+		GrowingFlower[] growingFlowers = planter.transform.GetComponentsInChildren<GrowingFlower>().OrderBy(o => transform.name).ToArray();
+
+		foreach (GrowingFlower growingFlower in growingFlowers) {
 			if (growingFlower.flower == null) {
-				//Basically just doing "new Flower()" but in a more annoying way
-				growingFlower.flower = (Flower)Activator.CreateInstance(flower);
+				growingFlower.flower = flowerInstance;
+				growingFlower.flower.DaysGrown = growingFlower.flower.GrowTime;
 				growingFlower.UpdateText();
 				growingFlower.UpdateSprite();
 				break;
 			}
 		}
+		money -= flowerInstance.Price;
+		dayAndMoneyText.text = $"Day {day}\n${money}";
+	}
+
+	public void EndDay() {
+		day++;
+
+		GrowingFlower[] growingFlowers = planter.transform.GetComponentsInChildren<GrowingFlower>().OrderBy(o => transform.name).ToArray();
+
+		foreach (GrowingFlower growingFlower in growingFlowers) {
+			if (growingFlower.flower != null) {
+				if (growingFlower.flower.WaterGiven / growingFlower.flower.WaterNeeded > 0.90 && growingFlower.flower.WaterGiven / growingFlower.flower.WaterNeeded < 1.1) {
+					growingFlower.flower.DaysGrown++;
+				}
+				PlayerPrefs.SetString(growingFlower.name, JsonUtility.ToJson(growingFlower.flower));
+			}
+		}
+
+		PlayerPrefs.SetInt("Day", day);
+		PlayerPrefs.SetInt("Money", money);
+		SceneManager.LoadScene("Serve");
 	}
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
-	{
-		store = transform.Find("StoreTab").gameObject;
+	void Start() {
 		Transform storeContent = store.transform.Find("Viewport").Find("Content");
 
 		money = PlayerPrefs.GetInt("Money");
+		day = PlayerPrefs.GetInt("Day");
+
+		dayAndMoneyText.text = $"Day {day}\n${money}";
 
 		GameObject purchaseableFlower = Resources.Load<GameObject>("Prefabs/PurchaseableFlower");
 
@@ -71,15 +110,28 @@ public class UIHandler : MonoBehaviour
 
 			newPurchaseableFlower.Find("FlowerSprite").GetComponent<Image>().sprite = flower.GrowingSprites[0];
 			newPurchaseableFlower.Find("FlowerNameText").GetComponent<TextMeshProUGUI>().text = flower.Name;
-			newPurchaseableFlower.Find("FlowerCostText").GetComponent<TextMeshProUGUI>().text = $"{flower.Price}";
+			newPurchaseableFlower.Find("FlowerCostText").GetComponent<TextMeshProUGUI>().text = $"${flower.Price}";
 			newPurchaseableFlower.Find("PurchaseFlowerButton").GetComponent<Button>().onClick.AddListener(() => PurchaseFlower(type));
 			flowerCount++;
 		}
+
+		GrowingFlower[] growingFlowers = planter.transform.GetComponentsInChildren<GrowingFlower>().OrderBy(o => transform.name).ToArray();
+
+		foreach (GrowingFlower growingFlower in growingFlowers) {
+			if (!PlayerPrefs.HasKey(growingFlower.name)) {
+				continue;
+			}
+			Flower savedFlower = JsonUtility.FromJson<Flower>(PlayerPrefs.GetString(growingFlower.name));
+			growingFlower.flower = (Flower)Activator.CreateInstance(Type.GetType(savedFlower.Name));
+			growingFlower.flower.DaysGrown = savedFlower.DaysGrown;
+			growingFlower.UpdateSprite();
+			growingFlower.UpdateText();
+		}
+
 	}
 
 	// Update is called once per frame
-	void Update()
-	{
-		
+	void Update() {
+
 	}
 }

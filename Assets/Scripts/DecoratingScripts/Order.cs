@@ -62,7 +62,7 @@ public class Order {
 
 public class OrderData {
     // Creating flower instances
-    public Lavendar lavendar;
+    public Lavender lavender;
     public Rose rose;
     public Sunflower sunflower;
     public Mint mint;
@@ -72,22 +72,22 @@ public class OrderData {
 
 
     // Order instances
-    public OrderItem lavendarOrder;
+    public OrderItem lavenderOrder;
 
     public Order test;
 
 
     public OrderData() {
-        lavendar = new();
+        lavender = new();
         rose = new();
         sunflower = new();
         mint = new();
         rosemary = new();
         posies = new();
-        flowerArray = new Flower[] { lavendar, rose, sunflower, mint, rosemary, posies };
+        flowerArray = new Flower[] { lavender, rose, sunflower, mint, rosemary, posies };
 
-        lavendarOrder = new OrderItem(
-            lavendar,
+        lavenderOrder = new OrderItem(
+            lavender,
             2,
             new Vector2[]{
                 new Vector2(-1,1), new Vector2(1,-1)
@@ -95,7 +95,7 @@ public class OrderData {
         );
 
         test = new Order(
-            new OrderItem[] { lavendarOrder }
+            new OrderItem[] { lavenderOrder }
         );
 
     }

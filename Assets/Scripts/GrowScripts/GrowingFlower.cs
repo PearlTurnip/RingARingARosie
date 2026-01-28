@@ -14,7 +14,10 @@ public class GrowingFlower : MonoBehaviour {
 			flowerText.text = "";
 			return;
 		}
-		flowerText.text = $"{flower.WaterGiven / flower.WaterNeeded:N0}%";
+		else if (flower.DaysGrown >= flower.GrowTime) {
+			flowerText.text = "Ready!";
+		}
+		flowerText.text = $"{flower.WaterGiven / flower.WaterNeeded:P0}";
 	}
 
 	public void UpdateSprite() {
@@ -27,7 +30,7 @@ public class GrowingFlower : MonoBehaviour {
 		if (flower.DaysGrown == 0) {
 			flowerImage.sprite = flower.GrowingSprites[0];
 		}
-		else if (flower.DaysGrown == flower.GrowTime) {
+		else if (flower.DaysGrown >= flower.GrowTime) {
 			flowerImage.sprite = flower.GrowingSprites[2];
 		}
 		else {
@@ -39,7 +42,15 @@ public class GrowingFlower : MonoBehaviour {
 		if (flower == null) {
 			return;
 		}
-		flower.WaterGiven += 50 * Time.deltaTime;
+		else if (flower.DaysGrown >= flower.GrowTime) {
+			PlayerPrefs.SetInt(flower.Name, PlayerPrefs.GetInt(flower.Name, 0) + 1);
+			flower = null;
+			UpdateSprite();
+			UpdateText();
+			return;
+		}
+		flower.WaterGiven += 0.5f * Time.deltaTime;
+		print(flower.WaterGiven);
 		UpdateText();
 	}
 

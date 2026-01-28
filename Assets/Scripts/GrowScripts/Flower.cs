@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class Flower
 {
+    [SerializeField]
 	private string name;
 	private string description;
 	private int price;
 
 	private int growTime;
+    [SerializeField]
 	private int daysGrown = 0;
 
 	private float waterNeeded;
@@ -25,14 +27,14 @@ public class Flower
     public Sprite[] GrowingSprites { get => growingSprites; set => growingSprites = value; }
 }
 
-public class Lavendar : Flower {
-	public Lavendar() {
-		Name = "Lavendar";
+public class Lavender : Flower {
+	public Lavender() {
+		Name = "Lavender";
 		Description = "Smells good :D";
 		Price = 100;
 
-		GrowTime = 3;
-		WaterNeeded = 1;
+		GrowTime = 6;
+		WaterNeeded = 0.3f;
 
 		GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant4");
 	}
@@ -44,7 +46,7 @@ public class Rose : Flower {
         Description = "Rose? I hardly know her!";
         Price = 100;
 
-        GrowTime = 3;
+        GrowTime = 7;
         WaterNeeded = 1;
 
         GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant1");
@@ -57,8 +59,8 @@ public class Sunflower : Flower {
         Description = "Always on the sunny side of life"; // Or (why is there not a moon flower)
         Price = 100;
 
-        GrowTime = 3;
-        WaterNeeded = 1;
+        GrowTime = 2;
+        WaterNeeded = 1.5f;
 
         GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant2");
     }
@@ -71,7 +73,7 @@ public class Mint : Flower {
         Price = 100;
 
         GrowTime = 3;
-        WaterNeeded = 1;
+        WaterNeeded = 1.5f;
 
         GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant5");
     }
@@ -83,8 +85,8 @@ public class Rosemary : Flower {
         Description = "The grandmother of the plant world";
         Price = 100;
 
-        GrowTime = 3;
-        WaterNeeded = 1;
+        GrowTime = 5;
+        WaterNeeded = 0.5f;
 
         GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant6");
     }
@@ -96,7 +98,7 @@ public class Posies : Flower {
         Description = "A-tishoo! A-tishoo!\nWe all fall down!";
         Price = 100;
 
-        GrowTime = 3;
+        GrowTime = 4;
         WaterNeeded = 1;
 
         GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant3");
