@@ -56,7 +56,6 @@ public class UIHandler : MonoBehaviour {
 		foreach (GrowingFlower growingFlower in growingFlowers) {
 			if (growingFlower.flower == null) {
 				growingFlower.flower = flowerInstance;
-				growingFlower.flower.DaysGrown = growingFlower.flower.GrowTime;
 				growingFlower.UpdateText();
 				growingFlower.UpdateSprite();
 				break;
@@ -82,6 +81,7 @@ public class UIHandler : MonoBehaviour {
 
 		PlayerPrefs.SetInt("Day", day);
 		PlayerPrefs.SetInt("Money", money);
+		PlayerPrefs.Save();
 		SceneManager.LoadScene("Serve");
 	}
 
