@@ -12,10 +12,20 @@ public class Mask : MonoBehaviour
     private bool debounce = false;
 
     private int placedFlowers = 0;
+    private int score = 0;
 
     private GameObject heldFlower;
 
     private List<ItemGlow> highlightObjects = new List<ItemGlow>();
+
+
+    public void SetScore(int amt) {
+        score = amt;
+    }
+
+    public int GetScore() {
+        return score;
+    }
 
 
     public void SetCurrentOrder(Order newOrder) {
@@ -112,6 +122,8 @@ public class Mask : MonoBehaviour
 
                     if (heldFlower.GetComponent<DragFlower>().flowerId == currentOrder.GetItems()[selectedOrderItemIndex].GetName() ) {
                         placedFlowers++;
+                        score += (int)(currentOrder.GetItems()[selectedOrderItemIndex].GetAccuracy(heldFlower.transform.position) * 1000f);
+                        Debug.Log(currentOrder.GetItems()[selectedOrderItemIndex].GetAccuracy(heldFlower.transform.position) * 1000f);
                     }
                 }
 

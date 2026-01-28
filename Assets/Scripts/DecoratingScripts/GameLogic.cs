@@ -31,6 +31,10 @@ public class GameLogic : MonoBehaviour
         timeRemaining = 120f;
     }
 
+    public void SetOrder(Order newOrder) {
+        currentMask.GetComponent<Mask>().SetCurrentOrder(newOrder);
+    }
+
     private string ConvertToTime() {
         // Doubt we're gonna need anything higher than a minute right?
         int min = (int)(timeRemaining / 60f);
@@ -90,6 +94,11 @@ public class GameLogic : MonoBehaviour
         }
 
         flowerPotsFilled = true;
+    }
+
+    private void DelayedScore() {
+        score += currentMask.GetComponent<Mask>().GetScore();
+            currentMask.GetComponent<Mask>().SetScore(0);
     }
 
     private void Start() {
