@@ -9,24 +9,33 @@ public class UIHandler : MonoBehaviour
 {
 	private GameObject store;
 	private bool storeOpen = false;
+	private bool storeMoving;
+	private int money;
 
 	private IEnumerator LerpStorePanel() {
 		float t = 0;
 		float startingPosition = store.transform.localPosition.x;
-		float goalPosition = storeOpen ? startingPosition - 230 : startingPosition + 230;
+		float goalPosition = storeOpen ? startingPosition - 235 : startingPosition + 235;
+		storeMoving = true;
 		while (t < 1) {
 			store.transform.localPosition = new Vector3(Mathf.Lerp(startingPosition, goalPosition, t), store.transform.localPosition.y, store.transform.localPosition.z);
 			t += Time.deltaTime * 5;
 			yield return null;
 		}
+		storeMoving = false;
 	}
 
 	public void ToggleStorePanel() {
+		if (storeMoving) {
+			return;
+		}
 		storeOpen = !storeOpen;
 		StartCoroutine(LerpStorePanel());
 	}
 
 	public void PurchaseFlower(Type flower) {
+		
+
 		foreach (GrowingFlower growingFlower in FindObjectsByType<GrowingFlower>(FindObjectsSortMode.InstanceID)) {
 			if (growingFlower.flower == null) {
 				//Basically just doing "new Flower()" but in a more annoying way
@@ -42,6 +51,9 @@ public class UIHandler : MonoBehaviour
 	void Start()
 	{
 		store = transform.Find("StoreTab").gameObject;
+		Transform storeContent = store.transform.Find("Viewport").Find("Content");
+
+		money = PlayerPrefs.GetInt("Money");
 
 		GameObject purchaseableFlower = Resources.Load<GameObject>("Prefabs/PurchaseableFlower");
 
@@ -55,16 +67,14 @@ public class UIHandler : MonoBehaviour
 			//Basically just doing "new Flower()" but in a more annoying way
 			Flower flower = (Flower)Activator.CreateInstance(type);
 
-			Transform newPurchaseableFlower = Instantiate(purchaseableFlower, store.transform).transform;
+			Transform newPurchaseableFlower = Instantiate(purchaseableFlower, storeContent).transform;
 
-			newPurchaseableFlower.localPosition = new Vector3(0, 102 - (120 * flowerCount), 0);
 			newPurchaseableFlower.Find("FlowerSprite").GetComponent<Image>().sprite = flower.GrowingSprites[0];
 			newPurchaseableFlower.Find("FlowerNameText").GetComponent<TextMeshProUGUI>().text = flower.Name;
 			newPurchaseableFlower.Find("FlowerCostText").GetComponent<TextMeshProUGUI>().text = $"{flower.Price}";
 			newPurchaseableFlower.Find("PurchaseFlowerButton").GetComponent<Button>().onClick.AddListener(() => PurchaseFlower(type));
 			flowerCount++;
 		}
-
 	}
 
 	// Update is called once per frame

@@ -92,7 +92,7 @@ public class Rosemary : Flower {
 
 public class Posies : Flower {
     public Posies() {
-        Name = "Rosemary";
+        Name = "Posies";
         Description = "A-tishoo! A-tishoo!\nWe all fall down!";
         Price = 100;
 
