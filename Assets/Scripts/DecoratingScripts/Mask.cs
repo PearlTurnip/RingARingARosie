@@ -34,6 +34,7 @@ public class Mask : MonoBehaviour
 
                 // Place highlighted sprite here
                 GameObject itemObject = new GameObject();
+                itemObject.tag = "MaskScene";
 
                 // Creating the glow for the items
                 SpriteRenderer renderer = itemObject.AddComponent<SpriteRenderer>();
@@ -76,8 +77,12 @@ public class Mask : MonoBehaviour
 
                     // Creating object
                     heldFlower = new GameObject();
+<<<<<<< Updated upstream
 
                     // Attaching sprite
+=======
+                    heldFlower.tag = "MaskScene";
+>>>>>>> Stashed changes
                     SpriteRenderer spriteRender = heldFlower.AddComponent<SpriteRenderer>();
                     spriteRender.sprite = attFlower.GrowingSprites[3];
                     spriteRender.sortingOrder = 5;

@@ -6,6 +6,14 @@ TagManager:
   tags:
   - FlowerPot
   - Mask
+  - UIServeScene
+  - UIMaskScene
+  - UIGrowScene
+  - persistent
+  - ServeScene
+  - MaskScene
+  - GrowScene
+  - Canvas
   layers:
   - Default
   - TransparentFX

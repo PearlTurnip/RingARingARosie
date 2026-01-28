@@ -74,8 +74,12 @@ public class GameLogic : MonoBehaviour
                 go.transform.parent = pot.transform;
                 go.transform.position = pot.transform.position;
                 go.transform.Translate(randomOffset);
+<<<<<<< Updated upstream
 
                 // Attaching spirte
+=======
+                go.tag = "MaskScene";
+>>>>>>> Stashed changes
                 SpriteRenderer sprRender = go.AddComponent<SpriteRenderer>();
                 sprRender.sortingOrder = 2;
                 sprRender.sprite = flowerSprite;

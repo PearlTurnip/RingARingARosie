@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 168084182755989599}
   m_Layer: 5
   m_Name: FlowerText
-  m_TagString: Untagged
+  m_TagString: GrowScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5557202596096036055}
   m_Layer: 5
   m_Name: FlowerImage
-  m_TagString: Untagged
+  m_TagString: GrowScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 711487985471662287}
   m_Layer: 5
   m_Name: GrowingFlower
-  m_TagString: Untagged
+  m_TagString: GrowScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,4 +308,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76097cc92a1337946acf54f639b7c7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerText: {fileID: 0}
