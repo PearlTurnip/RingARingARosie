@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 public class Mask : MonoBehaviour
 {
     private Order currentOrder;
-    
-
     private int selectedOrderItemIndex;
 
     private bool debounce = false;
@@ -16,11 +14,11 @@ public class Mask : MonoBehaviour
 
     private List<ItemGlow> highlightObjects = new List<ItemGlow>();
 
-    private List<GameObject> placedFlowers = new List<GameObject>();
-
 
     public void SetCurrentOrder(Order newOrder) {
         currentOrder = newOrder;
+        selectedOrderItemIndex = 0;
+        PlaceHighlights();
     }
 
 
@@ -67,9 +65,11 @@ public class Mask : MonoBehaviour
 
                     heldFlower = new GameObject();
                     SpriteRenderer spriteRender = heldFlower.AddComponent<SpriteRenderer>();
-                    spriteRender.sprite = attFlower.DecoratingSprites[0];
+                    spriteRender.sprite = attFlower.GrowingSprites[3];
                     spriteRender.sortingOrder = 5;
                     heldFlower.transform.position = mouseWorld;
+                    heldFlower.transform.localScale = new Vector2(4, 4);
+                    heldFlower.transform.rotation = Quaternion.Euler(new Vector3(0, 0, UnityEngine.Random.Range(0, 2 * Mathf.PI)));
 
                 }
             }else {
@@ -87,7 +87,7 @@ public class Mask : MonoBehaviour
                     if (!hit.CompareTag("Mask")) continue;
 
                     didCollide = true;
-                    placedFlowers.Add(heldFlower);
+                    heldFlower.transform.parent = transform;
                 }
 
                 if (!didCollide) Destroy(heldFlower);

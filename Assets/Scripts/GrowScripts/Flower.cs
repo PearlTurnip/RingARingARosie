@@ -13,7 +13,6 @@ public class Flower
 	private float waterGiven = 0;
 
 	private Sprite[] growingSprites;
-	private Sprite[] decoratingSprites;
 
 
 	public string Name { get => name; set => name = value; }
@@ -24,7 +23,6 @@ public class Flower
 	public float WaterNeeded { get => waterNeeded; set => waterNeeded = value; }
 	public float WaterGiven { get => waterGiven; set => waterGiven = value; }
     public Sprite[] GrowingSprites { get => growingSprites; set => growingSprites = value; }
-    public Sprite[] DecoratingSprites { get => decoratingSprites; set => decoratingSprites = value; }
 }
 
 public class Lavendar : Flower {
@@ -40,16 +38,67 @@ public class Lavendar : Flower {
 	}
 }
 
-public class Daisy : Flower {
-	public Daisy() {
-		Name = "Daisy";
-		Description = "Daisy? I hardly know her";
-		Price = 20;
+public class Rose : Flower {
+    public Rose() {
+        Name = "Rose";
+        Description = "Rose? I hardly know her!";
+        Price = 100;
 
-		GrowTime = 2;
-		WaterNeeded = 0.5f;
+        GrowTime = 3;
+        WaterNeeded = 1;
 
-		DecoratingSprites = new Sprite[] { UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Resources/Sprites/FlowerPots/daisy_placeholder.png"), UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/FlowerPots/daisy_pot") };
-		GrowingSprites = new Sprite[] { UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/Plants/plant4_0.png"), UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/Plants/plant4_1.png"), UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/Plants/plant4_2.png") };
-	}
+        GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant1");
+    }
+}
+
+public class Sunflower : Flower {
+    public Sunflower() {
+        Name = "Sunflower";
+        Description = "Always on the sunny side of life"; // Or (why is there not a moon flower)
+        Price = 100;
+
+        GrowTime = 3;
+        WaterNeeded = 1;
+
+        GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant2");
+    }
+}
+
+public class Mint : Flower {
+    public Mint() {
+        Name = "Mint";
+        Description = "Refreshing as always";
+        Price = 100;
+
+        GrowTime = 3;
+        WaterNeeded = 1;
+
+        GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant5");
+    }
+}
+
+public class Rosemary : Flower {
+    public Rosemary() {
+        Name = "Rosemary";
+        Description = "The grandmother of the plant world";
+        Price = 100;
+
+        GrowTime = 3;
+        WaterNeeded = 1;
+
+        GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant6");
+    }
+}
+
+public class Posies : Flower {
+    public Posies() {
+        Name = "Rosemary";
+        Description = "A-tishoo! A-tishoo!\nWe all fall down!";
+        Price = 100;
+
+        GrowTime = 3;
+        WaterNeeded = 1;
+
+        GrowingSprites = Resources.LoadAll<Sprite>("Sprites/Plants/plant3");
+    }
 }

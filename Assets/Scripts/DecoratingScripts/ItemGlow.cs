@@ -3,15 +3,22 @@ using UnityEngine;
 public class ItemGlow : MonoBehaviour
 {
     public string targetName;
-
+    private Renderer renderer;
+    private Material startingMaterial;
     private bool glowing = false;
 
+    private void Start() {
+        renderer = GetComponent<Renderer>();
+        startingMaterial = renderer.material;
+    }
 
-    void Update()
+    private void Update()
     {
         if (glowing) {
             // Glow here
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, (Mathf.Cos(Time.time) + 1f) / 2f);
+            renderer.material = Resources.Load<Material>("Materials/PlacementOutline.mat");
+        }else {
+            renderer.material = startingMaterial;
         }
 
         glowing = false; // Resetting rather than making updates cuz im lazy

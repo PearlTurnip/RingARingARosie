@@ -22,7 +22,7 @@ public class OrderItem {
     }
 
     public Sprite GetSprite(){
-        return flower.DecoratingSprites[0];
+        return flower.GrowingSprites[3];
     }
 
     int GetNearestPositionIndex(Vector2 position){
@@ -48,13 +48,9 @@ public class OrderItem {
 }
 
 public class Order {
-    Sprite mask;
     OrderItem[] items;
 
-    OrderItem selectedItem;
-
-    public Order(Sprite maskSprite, OrderItem[] _items) {
-        mask = maskSprite;
+    public Order(OrderItem[] _items) {
         items = _items;
     }
 
@@ -66,16 +62,32 @@ public class Order {
 
 public class OrderData {
     // Creating flower instances
-    public Daisy daisy;
-    public OrderItem daisyOrder;
+    public Lavendar lavendar;
+    public Rose rose;
+    public Sunflower sunflower;
+    public Mint mint;
+    public Rosemary rosemary;
+    public Posies posies;
+    public Flower[] flowerArray;
+
+
+    // Order instances
+    public OrderItem lavendarOrder;
 
     public Order test;
 
 
     public OrderData() {
-        daisy = new();
-        daisyOrder = new OrderItem(
-            daisy,
+        lavendar = new();
+        rose = new();
+        sunflower = new();
+        mint = new();
+        rosemary = new();
+        posies = new();
+        flowerArray = new Flower[] { lavendar, rose, sunflower, mint, rosemary, posies };
+
+        lavendarOrder = new OrderItem(
+            lavendar,
             2,
             new Vector2[]{
                 new Vector2(-1,1), new Vector2(1,-1)
@@ -83,8 +95,7 @@ public class OrderData {
         );
 
         test = new Order(
-            Resources.Load<Sprite>("Sprites/Picture1"),
-            new OrderItem[] { daisyOrder }
+            new OrderItem[] { lavendarOrder }
         );
 
     }

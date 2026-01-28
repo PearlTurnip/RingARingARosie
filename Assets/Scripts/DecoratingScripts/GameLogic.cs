@@ -1,12 +1,6 @@
-using System;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
-
-[System.Serializable]
-public struct FlowerPotData {
-    public string flower;
-    public Sprite potTexture;
-}
 
 public class GameLogic : MonoBehaviour
 {
@@ -19,8 +13,7 @@ public class GameLogic : MonoBehaviour
 
     private float timeRemaining = 120f;
     private int score = 0;
-
-    public FlowerPotData[] potData = new FlowerPotData[6];
+    private bool flowerPotsFilled = false;
 
     [SerializeField] private GameObject currentMask;
 
@@ -63,12 +56,37 @@ public class GameLogic : MonoBehaviour
             mask.DecorateTick(); // Pass in info later
         }
 
+        if (flowerPotsFilled) return;
+
+        OrderData orderData = new OrderData();
+
         for (int i=0; i<6; i++) {
             GameObject pot = flowerPots[i];
-            FlowerPotData data = potData[i];
-            pot.GetComponent<SpriteRenderer>().sprite = data.potTexture;
-            pot.GetComponent<FlowerPot>().SetAttachedFlower(new OrderData().daisy);
+
+            Flower flower = orderData.flowerArray[i];
+            Sprite flowerSprite = flower.GrowingSprites[3];
+
+            for (int j=0; j<5; j++) {
+                float offsetRange = 1f;
+                Vector2 randomOffset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-offsetRange, offsetRange) );
+                GameObject go = new GameObject();
+                go.transform.parent = pot.transform;
+                go.transform.position = pot.transform.position;
+                go.transform.Translate(randomOffset);
+                SpriteRenderer sprRender = go.AddComponent<SpriteRenderer>();
+                sprRender.sortingOrder = 2;
+                sprRender.sprite = flowerSprite;
+
+                float scale = 0.75f;
+                go.transform.localScale = new Vector2(scale, scale);
+
+                go.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 2 * Mathf.PI)));
+            }
+
+            pot.GetComponent<FlowerPot>().SetAttachedFlower(flower);
         }
+
+        flowerPotsFilled = true;
     }
 
     private void Start() {
