@@ -87,16 +87,9 @@ public class Mask : MonoBehaviour
 
                     // Creating object
                     heldFlower = new GameObject();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
                     // Attaching sprite
-=======
                     heldFlower.tag = "MaskScene";
->>>>>>> Stashed changes
-=======
-                    heldFlower.tag = "MaskScene";
->>>>>>> Stashed changes
                     SpriteRenderer spriteRender = heldFlower.AddComponent<SpriteRenderer>();
                     spriteRender.sprite = attFlower.GrowingSprites[3];
                     spriteRender.sortingOrder = 5;

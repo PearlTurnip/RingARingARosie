@@ -27,16 +27,8 @@ public class UIHandler : MonoBehaviour {
 
 	private IEnumerator LerpStorePanel() {
 		float t = 0;
-<<<<<<< Updated upstream
 		float startingPosition = store.transform.position.x;
 		float goalPosition = storeOpen ? storeOpenPosition.position.x : storeClosedPosition.position.x;
-=======
-		float startingPosition = store.transform.localPosition.x;
-		float goalPosition = storeOpen ? startingPosition - 600 : startingPosition + 600;
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 		storeMoving = true;
 		while (t < 1) {
 			store.transform.position = new Vector3(Mathf.Lerp(startingPosition, goalPosition, t), store.transform.position.y, store.transform.position.z);
