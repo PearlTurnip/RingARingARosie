@@ -147,6 +147,7 @@ public class Mask : MonoBehaviour
 
             if (selectedOrderItemIndex >= currentOrder.GetItems().Length) {
                 // Finish mask decorating
+                FindFirstObjectByType<Customer>().hasBeenServed = true;
                 Debug.Log("FINISHED!");
             }
         }

@@ -6,7 +6,7 @@ using TMPro;
 public class Customer : MonoBehaviour
 {
     [SerializeField]
-    private float patiencePercentage = 100f;
+    public float patiencePercentage = 100f;
     [SerializeField]
     private ProgressBar patience;
     [SerializeField]
@@ -154,7 +154,7 @@ public class Customer : MonoBehaviour
         float startPos = transform.position.x;
         StartCoroutine(Move(startPos, -20f, false));
         counter.seating[seat] = false;
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 1);
     }
 
     IEnumerator Move(float start, float end, bool entering) {
