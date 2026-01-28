@@ -1,11 +1,21 @@
-using UnityEditor;
+using System;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
 	public void PlayGame() {
-		SceneManager.LoadScene("Serve");
+		foreach (Type type in Assembly.GetExecutingAssembly().GetTypes()) {
+			if (!type.IsSubclassOf(typeof(Flower))) {
+				continue;
+			}
+			if (!PlayerPrefs.HasKey(type.Name)) {
+				PlayerPrefs.SetInt(type.Name, 10);
+			}
+		}
+
+			SceneManager.LoadScene("Serve");
 	}
 
 	public void QuitGame() {
