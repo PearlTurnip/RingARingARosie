@@ -154,6 +154,11 @@ public class Customer : MonoBehaviour
         float startPos = transform.position.x;
         StartCoroutine(Move(startPos, -20f, false));
         counter.seating[seat] = false;
+
+        int temp = PlayerPrefs.GetInt("CustomersServedToday");
+        PlayerPrefs.SetInt("CustomersServedToday", temp++);
+        PlayerPrefs.Save();
+
         Destroy(gameObject, 1);
     }
 
@@ -187,6 +192,7 @@ public class Customer : MonoBehaviour
                 moneyUI.text = "$$ - " + money.ToString();
 
                 PlayerPrefs.SetInt("Money", money);
+                PlayerPrefs.Save();
 
                 ExitScene(true);
                 seated = false;

@@ -30,6 +30,10 @@ public class Counter : MonoBehaviour
         {
             //customerManager.day++;
             //PlayerPrefs.SetInt("Day", customerManager.day);
+            PlayerPrefs.SetInt("CustomersSentToday", 0);
+            PlayerPrefs.SetInt("CustomersServedToday", 0);
+            PlayerPrefs.Save();
+
             SceneManager.LoadScene("GrowScene");
         }
     }

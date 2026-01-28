@@ -13,16 +13,38 @@ public class CustomerManager : MonoBehaviour
     private TextMeshProUGUI dayUI;
 
     public int day = 0;
-    private int runningDay = -1;
+    public int customersSentToday = 0;
+    public int customersServedToday = 0;
     public bool waitingForDayToEnd = false;
 
     private void Start()
     {
-        runningDay = day - 1;
+        customersSentToday = PlayerPrefs.GetInt("CustomersSentToday");
+        customersServedToday = PlayerPrefs.GetInt("CustomersServedToday");
+
+        if (customersSentToday == 0)
+        {
+            dayUI.text = "Day - " + day.ToString();
+            //Debug.Log(runningDay);
+            StartCoroutine(StartDay(day + 2));
+
+        }
+        else if (customersServedToday < day + 2)
+        {
+            int temp = customersSentToday - customersServedToday;
+            for (int i = 0; i < temp; i++)
+            {
+                customersSentToday--;
+                spawnCustomer();
+            }
+        }
     }
 
     public void spawnCustomer()
     {
+        customersSentToday++;
+        PlayerPrefs.SetInt("CustomersSentToday", customersSentToday);
+        PlayerPrefs.Save();
         Customer newCustomer = Instantiate(customerPrefab);
         newCustomer.counter = counter;
         newCustomer.moneyUI = moneyUI;
@@ -31,37 +53,11 @@ public class CustomerManager : MonoBehaviour
     IEnumerator StartDay(int customers)
     {
         waitingForDayToEnd = false;
-        int customersSent = 0;
-        while (customersSent < customers)
+        while (customersSentToday < customers)
         {
             spawnCustomer();
-            customersSent++;
             yield return new WaitForSeconds(Random.Range(1f, 5f));
         }
         waitingForDayToEnd = true;
-    }
-
-    private void Update()
-    {
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        spawnCustomer();
-    //    }
-
-        if (day != runningDay)
-        {
-            dayUI.text = "Day - " + day.ToString();
-            //Debug.Log(runningDay);
-            if (day < 10)
-            {
-                StartCoroutine(StartDay(day + 2));
-            }
-            else
-            {
-                StartCoroutine(StartDay(2* day));
-            }
-
-            runningDay++;
-        }
     }
 }
