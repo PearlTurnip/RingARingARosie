@@ -17,7 +17,7 @@ public class GrowingFlower : MonoBehaviour {
 		else if (flower.DaysGrown >= flower.GrowTime) {
 			flowerText.text = "Ready!";
 		}
-		flowerText.text = $"{flower.WaterGiven / flower.WaterNeeded:P0}";
+		flowerText.text = $"Water: {flower.WaterGiven / flower.WaterNeeded:P0}";
 	}
 
 	public void UpdateSprite() {
@@ -50,7 +50,6 @@ public class GrowingFlower : MonoBehaviour {
 			return;
 		}
 		flower.WaterGiven += 0.5f * Time.deltaTime;
-		print(flower.WaterGiven);
 		UpdateText();
 	}
 
