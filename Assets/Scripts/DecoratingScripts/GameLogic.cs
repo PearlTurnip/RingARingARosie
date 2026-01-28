@@ -110,9 +110,7 @@ public class GameLogic : MonoBehaviour
     }
 
     private void Start() {
-        SetOrder(new OrderData().test);
-
-        //SetOrder(FindFirstObjectByType<Customer>().orderOrder);
+        SetOrder(FindFirstObjectByType<Customer>().orderOrder);
     }
 
 
