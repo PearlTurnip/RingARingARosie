@@ -132,7 +132,7 @@ public class GameLogic : MonoBehaviour
 
     private void WinUpdate() {
         if (currentMask.GetComponent<Mask>().win) {
-            StartCoroutine(LoseScript("Good Job!", "Serve"));
+            StartCoroutine(LoseScript("Good Job!", "GrowScene"));
         }
     }
 

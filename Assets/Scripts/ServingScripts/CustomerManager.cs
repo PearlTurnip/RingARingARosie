@@ -19,13 +19,14 @@ public class CustomerManager : MonoBehaviour
 
     private void Start()
     {
-        customersSentToday = PlayerPrefs.GetInt("CustomersSentToday");
-        customersServedToday = PlayerPrefs.GetInt("CustomersServedToday");
+        customersSentToday = PlayerPrefs.GetInt("CustomersSentToday", 0);
+        customersServedToday = PlayerPrefs.GetInt("CustomersServedToday", 0);
+        Debug.Log(customersSentToday);
+        Debug.Log(customersServedToday);
 
         if (customersSentToday == 0)
         {
             dayUI.text = "Day - " + day.ToString();
-            //Debug.Log(runningDay);
             StartCoroutine(StartDay(day + 2));
 
         }
@@ -36,6 +37,10 @@ public class CustomerManager : MonoBehaviour
             {
                 customersSentToday--;
                 spawnCustomer();
+            }
+            if (day + 2 -temp > 0)
+            {
+                StartCoroutine(StartDay(day + 2 - temp));
             }
         }
     }
