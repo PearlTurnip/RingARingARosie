@@ -51,37 +51,14 @@ public class CustomerManager : MonoBehaviour
         if (day != runningDay)
         {
             dayUI.text = "Day - " + day.ToString();
-            Debug.Log(runningDay);
-            switch (day)
+            //Debug.Log(runningDay);
+            if (day < 10)
             {
-                case 0:
-                    StartCoroutine(StartDay(5));
-                    break;
-                case 1:
-                    StartCoroutine(StartDay(6));
-                    break;
-                case 2:
-                    StartCoroutine(StartDay(8));
-                    break;
-                case 3:
-                    StartCoroutine(StartDay(10));
-                    break;
-                case 4:
-                    StartCoroutine(StartDay(12));
-                    break;
-                case 5:
-                    StartCoroutine(StartDay(7));
-                    break;
-                case 6:
-                    StartCoroutine(StartDay(15));
-                    break;
-                case 7:
-                    StartCoroutine(StartDay(20));
-                    break;
-
-                default:
-                    StartCoroutine(StartDay(25));
-                    break;
+                StartCoroutine(StartDay(day + 2));
+            }
+            else
+            {
+                StartCoroutine(StartDay(2* day));
             }
 
             runningDay++;

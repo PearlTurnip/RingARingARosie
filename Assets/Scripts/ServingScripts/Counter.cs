@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Counter : MonoBehaviour
 {
@@ -27,8 +28,9 @@ public class Counter : MonoBehaviour
         }
         if (!flag && customerManager.waitingForDayToEnd) //all seats are empty
         {
-            customerManager.day++;
-            PlayerPrefs.SetInt("Day", customerManager.day);
+            //customerManager.day++;
+            //PlayerPrefs.SetInt("Day", customerManager.day);
+            SceneManager.LoadScene("GrowScene");
         }
     }
 }
