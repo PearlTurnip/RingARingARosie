@@ -46,7 +46,7 @@ public class OrderItem {
 
     public float GetAccuracy(Vector2 position){
         Vector2 closestPoint = validPositions[GetNearestPositionIndex(position)];
-        float accuracy = ((closestPoint - position).magnitude / -2000f) + 1f;
+        float accuracy = ((closestPoint - position).magnitude / -5f) + 1f;
 
         return accuracy;
     }

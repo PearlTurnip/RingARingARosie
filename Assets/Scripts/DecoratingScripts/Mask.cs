@@ -13,6 +13,7 @@ public class Mask : MonoBehaviour
 
     private int placedFlowers = 0;
     private int score = 0;
+    public bool win = false;
 
     private GameObject heldFlower;
 
@@ -33,6 +34,7 @@ public class Mask : MonoBehaviour
         selectedOrderItemIndex = 0;
         PlaceHighlights();
         placedFlowers = 0;
+        win = false;
     }
 
 
@@ -147,8 +149,8 @@ public class Mask : MonoBehaviour
 
             if (selectedOrderItemIndex >= currentOrder.GetItems().Length) {
                 // Finish mask decorating
-                FindFirstObjectByType<Customer>().hasBeenServed = true;
-                Debug.Log("FINISHED!");
+                if (FindFirstObjectByType<Customer>()) FindFirstObjectByType<Customer>().hasBeenServed = true;
+                win = true;
             }
         }
     }

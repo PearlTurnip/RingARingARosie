@@ -52,12 +52,12 @@ public class GameLogic : MonoBehaviour
         // Possibly remaining customers here (review with otehrs)
     }
 
-    IEnumerator LoseScript(string message) {
+    IEnumerator LoseScript(string message, string scence) {
         titleText.text = message;
         yield return new WaitForSeconds(1.5f);
         titleText.text = "";
         // Change scene here. to? Thing?
-        SceneManager.LoadScene("Serve");
+        SceneManager.LoadScene(scence);
     }
 
     private void DecoratingUpdate() {
@@ -65,6 +65,7 @@ public class GameLogic : MonoBehaviour
         UIUpdate();
         DelayedScore();
         LoseUpdate();
+        WinUpdate();
 
 
         if (currentMask) {
@@ -84,7 +85,7 @@ public class GameLogic : MonoBehaviour
             Flower flower = orderData.flowerArray[i];
             Sprite flowerSprite = flower.GrowingSprites[3];
 
-            for (int j=0; j<Mathf.Clamp(PlayerPrefs.GetInt(flower.Name, 50), 0, 50); j++) {
+            for (int j=0; j<Mathf.Clamp(PlayerPrefs.GetInt(flower.Name, 10), 0, 50); j++) {
                 float offsetRange = 1f;
                 Vector2 randomOffset = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-offsetRange, offsetRange) );
                 GameObject go = new GameObject();
@@ -123,7 +124,13 @@ public class GameLogic : MonoBehaviour
     private void LoseUpdate() {
         float patience = FindFirstObjectByType<Customer>().patiencePercentage;
         if (patience <= 0) {
-            StartCoroutine(LoseScript("You're taking too long!"));
+            StartCoroutine(LoseScript("You're taking too long!", "Serve"));
+        }
+    }
+
+    private void WinUpdate() {
+        if (currentMask.GetComponent<Mask>().win) {
+            StartCoroutine(LoseScript("Good Job!", "Serve"));
         }
     }
 
