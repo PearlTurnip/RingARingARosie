@@ -102,7 +102,7 @@ public class GameLogic : MonoBehaviour
     }
 
     private void Start() {
-        currentMask.GetComponent<Mask>().SetCurrentOrder(new OrderData().test);
+        SetOrder(FindFirstObjectByType<Customer>().orderOrder);
     }
 
 

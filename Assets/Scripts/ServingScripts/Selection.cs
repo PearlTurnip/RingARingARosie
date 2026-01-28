@@ -6,12 +6,16 @@ public class Selection : MonoBehaviour
     [SerializeField]
     Customer customer;
 
-    public void OnMouseEnter()
+    public void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log(customer.orderOrder);
-            SceneManager.LoadScene("MaskDecoratingSCene");
-        }
+        DontDestroyOnLoad(customer);
+        SceneManager.LoadScene("MaskDecoratingSCene");
+        customer.transform.position = new Vector2(0, -2);
+
+        //GameLogic game = GameObject.FindGameObjectWithTag("MainGame").GetComponent<GameLogic>();
+        //Debug.Log(game);
+        //game.SetOrder(customer.orderOrder);
+
+        transform.gameObject.SetActive(false);
     }
 }
