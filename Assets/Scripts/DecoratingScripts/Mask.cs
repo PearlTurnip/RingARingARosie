@@ -10,7 +10,13 @@ public class Mask : MonoBehaviour
 
     private int selectedOrderItemIndex;
 
+    private bool debounce = false;
+
+    private GameObject heldFlower;
+
     private List<ItemGlow> highlightObjects = new List<ItemGlow>();
+
+    private List<GameObject> placedFlowers = new List<GameObject>();
 
 
     public void SetCurrentOrder(Order newOrder) {
@@ -47,18 +53,48 @@ public class Mask : MonoBehaviour
     }
 
     private void FlowerPotUpdate() {
+        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mouseSize = new(0.5f, 0.5f); // Used a size of 10 for some leniency. Make it feel nicer
         if (Input.GetMouseButton(0)) {
-            Vector2 mouseSize = new(10f, 10f); // Used a size of 10 for some leniency. Make it feel nicer
-            RaycastHit2D[] hits = Physics2D.BoxCastAll(Input.mousePosition, mouseSize, 0f, Vector2.zero, 1f, 0);
-            foreach (RaycastHit2D hit in hits) {
-                if (!hit.collider.CompareTag("FlowerBox")) continue;
-                if (!hit.collider.TryGetComponent<FlowerPot>(out FlowerPot potScript)) continue;
+            if (heldFlower == null) {
 
-                potScript.GetAttachedFlower();
+                Collider2D[] hits = Physics2D.OverlapBoxAll(mouseWorld, mouseSize, 0f);
+                foreach (Collider2D hit in hits) {
+                    if (!hit.CompareTag("FlowerPot")) continue;
+                    if (!hit.TryGetComponent<FlowerPot>(out FlowerPot potScript)) continue;
 
-                Debug.Log("aaaaa");
-                
-            }            
+                    Flower attFlower = potScript.GetAttachedFlower();
+
+                    heldFlower = new GameObject();
+                    SpriteRenderer spriteRender = heldFlower.AddComponent<SpriteRenderer>();
+                    spriteRender.sprite = attFlower.DecoratingSprites[0];
+                    spriteRender.sortingOrder = 5;
+                    heldFlower.transform.position = mouseWorld;
+
+                }
+            }else {
+                heldFlower.transform.position = mouseWorld;
+            }
+
+            debounce = true;
+        }else {
+            // Placement logic
+            if (debounce) {
+                // Only worry about placement here
+                Collider2D[] hits = Physics2D.OverlapBoxAll(mouseWorld, mouseSize, 0f);
+                bool didCollide = false;
+                foreach (Collider2D hit in hits) {
+                    if (!hit.CompareTag("Mask")) continue;
+
+                    didCollide = true;
+                    placedFlowers.Add(heldFlower);
+                }
+
+                if (!didCollide) Destroy(heldFlower);
+                heldFlower = null; // Using for resetting + safety
+
+                debounce = false;
+            }
         }
     }
 

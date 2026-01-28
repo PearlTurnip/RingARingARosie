@@ -49,6 +49,7 @@ public class Daisy : Flower {
 		GrowTime = 2;
 		WaterNeeded = 0.5f;
 
+		DecoratingSprites = new Sprite[] { UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Resources/Sprites/FlowerPots/daisy_placeholder.png"), UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/FlowerPots/daisy_pot") };
 		GrowingSprites = new Sprite[] { UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/Plants/plant4_0.png"), UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/Plants/plant4_1.png"), UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/Plants/plant4_2.png") };
 	}
 }

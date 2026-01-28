@@ -67,7 +67,12 @@ public class GameLogic : MonoBehaviour
             GameObject pot = flowerPots[i];
             FlowerPotData data = potData[i];
             pot.GetComponent<SpriteRenderer>().sprite = data.potTexture;
+            pot.GetComponent<FlowerPot>().SetAttachedFlower(new OrderData().daisy);
         }
+    }
+
+    private void Start() {
+        currentMask.GetComponent<Mask>().SetCurrentOrder(new OrderData().test);
     }
 
 
