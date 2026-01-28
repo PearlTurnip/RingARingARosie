@@ -10,6 +10,10 @@ using UnityEngine.SceneManagement;
 public class UIHandler : MonoBehaviour {
 	[SerializeField]
 	private GameObject store;
+	[SerializeField]
+	private Transform storeOpenPosition;
+	[SerializeField]
+	private Transform storeClosedPosition;
 	private bool storeOpen = false;
 	private bool storeMoving;
 
@@ -23,11 +27,11 @@ public class UIHandler : MonoBehaviour {
 
 	private IEnumerator LerpStorePanel() {
 		float t = 0;
-		float startingPosition = store.transform.localPosition.x;
-		float goalPosition = storeOpen ? startingPosition - 235 : startingPosition + 235;
+		float startingPosition = store.transform.position.x;
+		float goalPosition = storeOpen ? storeOpenPosition.position.x : storeClosedPosition.position.x;
 		storeMoving = true;
 		while (t < 1) {
-			store.transform.localPosition = new Vector3(Mathf.Lerp(startingPosition, goalPosition, t), store.transform.localPosition.y, store.transform.localPosition.z);
+			store.transform.position = new Vector3(Mathf.Lerp(startingPosition, goalPosition, t), store.transform.position.y, store.transform.position.z);
 			t += Time.deltaTime * 5;
 			yield return null;
 		}
@@ -87,6 +91,7 @@ public class UIHandler : MonoBehaviour {
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start() {
+		store.transform.position = storeClosedPosition.transform.position;
 		Transform storeContent = store.transform.Find("Viewport").Find("Content");
 
 		money = PlayerPrefs.GetInt("Money");
