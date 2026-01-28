@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System;
+using System.Collections.Generic;
 
 public class OrderItem {
     private Flower flower;
@@ -15,6 +16,10 @@ public class OrderItem {
     public string GetName()
     {
         return flower.Name;
+    }
+
+    public int GetAmount() {
+        return amount;
     }
 
     public Vector2[] GetValidPositions(){
@@ -73,8 +78,11 @@ public class OrderData {
 
     // Order instances
     public OrderItem lavenderOrder;
+    public OrderItem roseNoseOrder;
 
     public Order test;
+
+    public Dictionary<string, Order> orderMap = new Dictionary<string, Order>();
 
 
     public OrderData() {
@@ -94,9 +102,18 @@ public class OrderData {
             }
         );
 
-        test = new Order(
-            new OrderItem[] { lavenderOrder }
+        roseNoseOrder = new OrderItem(
+            rose,
+            1,
+            new Vector2[] {
+                new Vector2(0,0)
+            }
         );
 
+
+
+        test = new Order(
+            new OrderItem[] { lavenderOrder, roseNoseOrder }
+        );
     }
 }

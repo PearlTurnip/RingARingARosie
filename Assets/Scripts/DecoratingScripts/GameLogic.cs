@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameLogic : MonoBehaviour
 {
@@ -73,6 +74,8 @@ public class GameLogic : MonoBehaviour
                 go.transform.parent = pot.transform;
                 go.transform.position = pot.transform.position;
                 go.transform.Translate(randomOffset);
+
+                // Attaching spirte
                 SpriteRenderer sprRender = go.AddComponent<SpriteRenderer>();
                 sprRender.sortingOrder = 2;
                 sprRender.sprite = flowerSprite;

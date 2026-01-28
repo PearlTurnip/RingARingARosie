@@ -51,7 +51,7 @@ Shader "Sprites/Outline2DOnly"
                 fixed4 col = tex2D(_MainTex, i.uv);
 
                 // Returning if invisible (useless calculation otherwise)
-                if (col.a > 0) return col;
+                if (col.a > 0) return float4(1,1,1,0);
 
                 // Normalizing vector for outline
                 float2 offset = _OutlineSize / _ScreenParams.xy;

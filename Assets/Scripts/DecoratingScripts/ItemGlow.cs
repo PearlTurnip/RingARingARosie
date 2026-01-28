@@ -3,12 +3,12 @@ using UnityEngine;
 public class ItemGlow : MonoBehaviour
 {
     public string targetName;
-    private Renderer renderer;
+    private SpriteRenderer renderer;
     private Material startingMaterial;
     private bool glowing = false;
 
     private void Start() {
-        renderer = GetComponent<Renderer>();
+        renderer = GetComponent<SpriteRenderer>();
         startingMaterial = renderer.material;
     }
 
@@ -16,9 +16,11 @@ public class ItemGlow : MonoBehaviour
     {
         if (glowing) {
             // Glow here
-            renderer.material = Resources.Load<Material>("Materials/PlacementOutline.mat");
+            renderer.enabled = true;
+            renderer.material = Resources.Load<Material>("Materials/PlacementOutline");
         }else {
             renderer.material = startingMaterial;
+            renderer.enabled = false;
         }
 
         glowing = false; // Resetting rather than making updates cuz im lazy

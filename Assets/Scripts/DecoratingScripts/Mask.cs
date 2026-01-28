@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,8 @@ public class Mask : MonoBehaviour
 
     private bool debounce = false;
 
+    private int placedFlowers = 0;
+
     private GameObject heldFlower;
 
     private List<ItemGlow> highlightObjects = new List<ItemGlow>();
@@ -19,10 +22,12 @@ public class Mask : MonoBehaviour
         currentOrder = newOrder;
         selectedOrderItemIndex = 0;
         PlaceHighlights();
+        placedFlowers = 0;
     }
 
 
     public void PlaceHighlights() {
+        highlightObjects.Clear();
         foreach (OrderItem item in currentOrder.GetItems() ){
             for (int i=0; i<item.GetValidPositions().Length; i++) {
                 Vector2 highlightPos = item.GetValidPositions()[i];
@@ -32,7 +37,11 @@ public class Mask : MonoBehaviour
 
                 // Creating the glow for the items
                 SpriteRenderer renderer = itemObject.AddComponent<SpriteRenderer>();
+                renderer.sortingOrder = 4;
                 renderer.sprite = item.GetSprite();
+
+                itemObject.transform.localScale = new Vector2(4, 4);
+                itemObject.transform.position = highlightPos;
 
                 // Creating highlight glow
                 ItemGlow glow = itemObject.AddComponent<ItemGlow>();
@@ -43,7 +52,9 @@ public class Mask : MonoBehaviour
     }
 
     private void GlowUpdate() {
-        foreach (ItemGlow glow in highlightObjects) {
+        if (selectedOrderItemIndex >= currentOrder.GetItems().Length) return;
+
+        foreach (ItemGlow glow in highlightObjects){
             if (glow.targetName == currentOrder.GetItems()[selectedOrderItemIndex].GetName()) {
                 glow.UseGlow();
             }
@@ -63,13 +74,23 @@ public class Mask : MonoBehaviour
 
                     Flower attFlower = potScript.GetAttachedFlower();
 
+                    // Creating object
                     heldFlower = new GameObject();
+
+                    // Attaching sprite
                     SpriteRenderer spriteRender = heldFlower.AddComponent<SpriteRenderer>();
                     spriteRender.sprite = attFlower.GrowingSprites[3];
                     spriteRender.sortingOrder = 5;
+
+                    // Applying transfomations
                     heldFlower.transform.position = mouseWorld;
                     heldFlower.transform.localScale = new Vector2(4, 4);
                     heldFlower.transform.rotation = Quaternion.Euler(new Vector3(0, 0, UnityEngine.Random.Range(0, 2 * Mathf.PI)));
+
+                    // Adding data
+                    DragFlower dragData = heldFlower.AddComponent<DragFlower>();
+                    dragData.flowerId = attFlower.Name;
+                    
 
                 }
             }else {
@@ -88,6 +109,10 @@ public class Mask : MonoBehaviour
 
                     didCollide = true;
                     heldFlower.transform.parent = transform;
+
+                    if (heldFlower.GetComponent<DragFlower>().flowerId == currentOrder.GetItems()[selectedOrderItemIndex].GetName() ) {
+                        placedFlowers++;
+                    }
                 }
 
                 if (!didCollide) Destroy(heldFlower);
@@ -98,9 +123,25 @@ public class Mask : MonoBehaviour
         }
     }
 
+    private void CompletedDecorCheck() {
+        if (placedFlowers >= currentOrder.GetItems()[selectedOrderItemIndex].GetAmount()) {
+            placedFlowers = 0;
+            selectedOrderItemIndex++;
+            PlaceHighlights();
+
+            // Collect score
+
+            if (selectedOrderItemIndex >= currentOrder.GetItems().Length) {
+                // Finish mask decorating
+                Debug.Log("FINISHED!");
+            }
+        }
+    }
+
 
     public void DecorateTick() {
         GlowUpdate();
         FlowerPotUpdate();
+        CompletedDecorCheck();
     }
 }
