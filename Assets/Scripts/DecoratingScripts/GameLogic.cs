@@ -53,7 +53,9 @@ public class GameLogic : MonoBehaviour
     private void DecoratingUpdate() {
         timeRemaining -= Time.deltaTime;
         UIUpdate();
-        
+        DelayedScore();
+
+
         if (currentMask) {
             Mask mask = currentMask.GetComponent<Mask>();
             if (!mask) return;
@@ -97,8 +99,13 @@ public class GameLogic : MonoBehaviour
     }
 
     private void DelayedScore() {
-        score += currentMask.GetComponent<Mask>().GetScore();
-            currentMask.GetComponent<Mask>().SetScore(0);
+        int newScore = currentMask.GetComponent<Mask>().GetScore();
+        Debug.Log(score);
+
+        if (newScore > 0) {
+            score += (int)(newScore / 10);
+            currentMask.GetComponent<Mask>().SetScore(newScore - (int)(newScore / 10));
+        }
     }
 
     private void Start() {
